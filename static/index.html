@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiempo en Barcelona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .weather-icon {
+            width: 100px;
+        }
+        .temperature {
+            font-size: 2em;
+            color: #333;
+        }
+        .description {
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tiempo en Barcelona</h1>
+    <div id="weather">
+        <img class="weather-icon" src="" alt="Clima">
+        <p class="temperature"></p>
+        <p class="description"></p>
+    </div>
+
+    <script>
+        async function fetchWeather() {
+            try {
+                const response = await fetch(/api/weather);
+                const data = await response.json();
+
+                document.querySelector(.weather-icon).src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+                document.querySelector(.temperature).textContent = `${data.temperature} °C`;
+                document.querySelector(.description).textContent = data.description;
+            } catch (error) {
+                console.error(Error al obtener el clima:, error);
+            }
+        }
+
+        fetchWeather();
+    </script>
+</body>
+</html>
