@@ -8,40 +8,51 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f0f8ff;
             margin-top: 50px;
         }
-        .weather-icon {
-            width: 100px;
+        .weather-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .weather-container h1 {
+            margin-bottom: 20px;
         }
         .temperature {
-            font-size: 2em;
-            color: #333;
+            font-size: 3em;
+            color: #ff4500;
+            margin-bottom: 10px;
         }
         .description {
-            font-size: 1.2em;
-            color: #666;
+            font-size: 1.5em;
+            color: #2f4f4f;
         }
     </style>
 </head>
 <body>
-    <h1>Tiempo en Barcelona</h1>
-    <div id="weather">
-        <img class="weather-icon" src="" alt="Clima">
-        <p class="temperature"></p>
-        <p class="description"></p>
+    <div class="weather-container">
+        <h1>Tiempo en Barcelona</h1>
+        <div id="temperature" class="temperature">Cargando...</div>
+        <div id="description" class="description"></div>
     </div>
 
     <script>
         async function fetchWeather() {
             try {
-                const response = await fetch(/api/weather);
+                const response = await fetch("/api/weather");
+                if (!response.ok) {
+                    throw new Error("Error en la petición: " + response.status);
+                }
                 const data = await response.json();
-
-                document.querySelector(.weather-icon).src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
-                document.querySelector(.temperature).textContent = `${data.temperature} °C`;
-                document.querySelector(.description).textContent = data.description;
+                document.getElementById("temperature").textContent = `${data.temperature} °C`;
+                document.getElementById("description").textContent = data.description;
             } catch (error) {
-                console.error(Error al obtener el clima:, error);
+                console.error(error);
+                document.getElementById("temperature").textContent = "No se pudo obtener el clima.";
+                document.getElementById("description").textContent = "";
             }
         }
 
