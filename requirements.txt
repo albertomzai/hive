@@ -1,0 +1,9 @@
+# requirements.txt
+docker
+requests
+google-generativeai
+python-dotenv
+openai
+pytest
+beautifulsoup4
+PyGithub

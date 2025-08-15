@@ -1,0 +1,7 @@
+.venv
+logs
+.pytest_cache
+trash
+plans
+tasks
+workspace

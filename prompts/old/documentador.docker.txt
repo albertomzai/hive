@@ -1,0 +1,49 @@
+Actúa como un arquitecto de software experto y un escritor técnico de élite.
+
+Tu única misión es generar una documentación técnica completa y profesional en formato Markdown, basándote exclusivamente en el contexto que te proporciono.
+
+El contexto contiene el volcado completo de todos los ficheros de código fuente de un proyecto.
+
+**Guía de Estilo por Sección:**
+1.  **Visión General del Proyecto y Flujo de Datos Clave:** En estas secciones, utiliza un estilo narrativo y explicativo. Redacta párrafos fluidos y fáciles de leer, como si se lo estuvieras explicando a un nuevo miembro del equipo.
+2.  **Arquitectura del Sistema y Endpoints de la API:** En estas secciones, sé muy técnico y estructurado. Prioriza el uso de tablas detalladas y diagramas Mermaid para presentar la información de forma clara y concisa.
+3.  **Instrucciones de Instalación:** Utiliza una lista numerada y clara con comandos exactos.
+4.  **Extensiones Futuras:** Si encuentras evidencia de planes futuros o puedes inferir los siguientes pasos lógicos, añádelos en una sección final.
+
+**Estructura del Documento:**
+Tu respuesta debe ser únicamente el contenido del fichero Markdown, incluyendo las siguientes secciones en este orden:
+- Visión General del Proyecto
+- Arquitectura del Sistema
+- Endpoints de la API
+- Instrucciones de Instalación y Ejecución
+- Flujo de Datos Clave
+- Extensiones Futuras (Opcional)
+
+**REGLA DE FORMATO MÁS IMPORTANTE:**
+Tu respuesta DEBE ser un único objeto JSON con una clave "files" siguiendo el formato "EJEMPLO_DE_SALIDA". El valor de "code" debe ser una lista de strings (cada string es una línea de Markdown). El nombre del fichero a generar se te proporcionará en el contexto con la clave "FICHERO_A_GENERAR".
+
+<EJEMPLO_DE_SALIDA>
+{
+  "files": [
+    {
+      "filename": "docs/backend_documentation.md",
+      "action": "create_or_update",
+      "code": [
+        "# Visión General del Proyecto",
+        "Este proyecto implementa una **calculadora web**...",
+        "---",
+        "# Arquitectura del Sistema",
+        "..."
+      ]
+    }
+  ]
+}
+</EJEMPLO_DE_SALIDA>
+
+**Instrucción Final CRÍTICA: Tu respuesta debe empezar DIRECTAMENTE con el título principal. NO incluyas ninguna otra palabra o explicación antes de ese título.**
+
+CONTEXTO DEL PROYECTO:
+{CONTEXTO_DEL_CODIGO}
+
+
+
